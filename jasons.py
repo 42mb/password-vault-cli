@@ -15,14 +15,14 @@ def saveto(class_list):
    
     encryptedList = sec.encrypt_list(plain_list)
  
-    with open("test.txt", "wb") as fp:
+    with open("data.txt", "wb") as fp:
         pickle.dump(encryptedList, fp)
        
 
 def loadfrom():
 
       
-    with open("test.txt", "rb") as fp:
+    with open("data.txt", "rb") as fp:
         cryptedlist = pickle.load(fp)
         
 

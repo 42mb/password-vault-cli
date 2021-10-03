@@ -19,10 +19,11 @@ import pickle
 
 ##############################
 
+inputhandler.handle_input()
 
 
 
-
+#### testing for now:
 
 testlist1 = ["xing", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "dom", "use", "1234567"]
 
@@ -35,9 +36,10 @@ def testen3():
     #reset
     encryptedd = sec.encrypt_list(testlist1)
 
+    #for reset
     #encryptedd = []
 
-
+    #for reset
 #    with open("test.txt", "wb") as fp:   #Pickling
  #       pickle.dump(encryptedd, fp)
  
@@ -57,5 +59,5 @@ def testen3():
 
 
 
-inputhandler.handle_input()
+
 #testen3()
