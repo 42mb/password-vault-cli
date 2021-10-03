@@ -23,6 +23,12 @@ inputhandler.handle_input()
 
 
 
+
+
+
+
+
+###############################
 #### testing for now:
 
 testlist1 = ["xing", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "blubb", "dom", "use", "1234567"]
@@ -31,7 +37,7 @@ testlist1 = ["xing", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "b
 ## load, decrypt, print, encrypt, safe passwordlist
 ## for testing purpose
 ## TODO, auslagerung in testing.py
-def testen3():
+def test_restore_basic_datafile():
     
     #reset
     encryptedd = sec.encrypt_list(testlist1)
@@ -40,11 +46,23 @@ def testen3():
     #encryptedd = []
 
     #for reset
-#    with open("test.txt", "wb") as fp:   #Pickling
- #       pickle.dump(encryptedd, fp)
+    with open("test.txt", "wb") as fp:   #Pickling
+        pickle.dump(encryptedd, fp)
  
    
+    with open("test.txt", "rb") as fp:   # Unpickling
+        b = pickle.load(fp)
+  
+    
+    decrypted = sec.decrypt_list(b)
+    print(decrypted)
+    print("")
+    print("")
+    print("")
+    #print(testlist1)
 
+def test_show_data():
+  
     with open("test.txt", "rb") as fp:   # Unpickling
         b = pickle.load(fp)
     
@@ -58,6 +76,5 @@ def testen3():
     #print(testlist1)
 
 
-
-
-#testen3()
+test_restore_basic_datafile()
+test_show_data()
