@@ -1,0 +1,14 @@
+new
+    encrypt obj /w class fnc?
+   
+
+   
+    saving/hashing master pw
+
+    save to clipboard
+
+    confirming master pw
+
+    getting input done
+
+    cleanup/garbage handeling
