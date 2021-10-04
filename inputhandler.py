@@ -2,7 +2,7 @@ import getpass
 import sys
 import objdata
 import jasons
-
+import security as sec
 
 
 #################################################
@@ -14,7 +14,7 @@ input_pw = "1234567"
 majorpw = "1234"
 firstload = True
 #-n -l
-argv1 = "-n"
+argv1 = "-newpw"
 argv2 = "xing"
 #################################################
 
@@ -23,17 +23,25 @@ argv2 = "xing"
 
 
 def confirmed_pw():
-    passwd = getpass.getpass('enter password')
+    #userinputPassword = getpass.getpass('enter password')
+
+    #debug mode: TODO reinstate getpass one line up
+    userinputPassword = majorpw
+    #debug mode end
+
+    #return sec.correct_hash(userinputPassword)
+    return sec.correct_hash(userinputPassword)
+    #return bcrypt.checkpw(password.encode(), hashAndSalt)
     #hash pw
     #cmpare hashes
-    return True
+    #return True
 
 
 def abort():
     exit()
 
 def handle_input():
-    print("-n or -l")
+    print("Welcome to pwfault, flags: -n or -l or -newpw")
     #input new password
     if (argv1 == "-n"): #input -NEW domain/name/password
         #argv1 ,argv2, argv3 
@@ -48,10 +56,8 @@ def handle_input():
             class_list.append( objdata.logindata(input_domain, input_username, input_pw))
             jasons.saveto(class_list)
         else:
-            abort()
-            
-            
-    #output existing password
+            abort()       
+            #output existing password
     if(argv1 == "-l"): #load, maybe with lower(argv1) ?
         #argv2 compare to domain in list, output of loginname, 
         #copy password to clipboard
@@ -64,6 +70,16 @@ def handle_input():
             #df=pd.DataFrame(['Text to copy'])
             #df.to_clipboard(index=False,header=False)
         else:
-            abort()
-            
-   
+            abort()           
+    if(argv1 == "-newpw"):
+        if(confirmed_pw): #TODO refractor!
+            newpw = getpass.getpass("enter new password: ")
+            newpwRepeat = getpass.getpass("enter new password again: ")
+            if(newpw == newpwRepeat):
+                sec.new_password(newpw)
+            else:
+                print("passwords are not the same")
+                abort()
+        else:
+            print("wrong password")
+

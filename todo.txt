@@ -1,14 +1,15 @@
-new
-    encrypt obj /w class fnc?
-   
+########## TODO  ||!TODO  ##############
 
-   
-    saving/hashing master pw
+#   first opening routine
+#   argv handeling
+#   output into Clipboard
+#   closed console = closed program 
+#   planned password change/
+#   planned delete object
+#   planned error handeling 
+#   planned list all domains
+#   encrypt obj /w class fnc?
+#   cleanup/garbage handeling in a secured way
+#   testing
 
-    save to clipboard
-
-    confirming master pw
-
-    getting input done
-
-    cleanup/garbage handeling
+##############################

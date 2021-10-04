@@ -7,20 +7,24 @@ import pickle
 
 ########## TODO  ||!TODO  ##############
 
-#   first opening json init for first input
-#   #handle master pw HASH
+#   first opening routine
 #   argv handeling
+#   output into Clipboard
 #   closed console = closed program 
-#   planned password change
+#   planned password change/
 #   planned delete object
 #   planned error handeling 
 #   planned list all domains
+#   encrypt obj /w class fnc?
+#   cleanup/garbage handeling in a secured way
 #   testing
 
 ##############################
 
 inputhandler.handle_input()
 
+#sec.new_password("123")
+#test = sec.correct_hash("1234")
 
 
 
@@ -37,6 +41,8 @@ testlist1 = ["xing", "blubb", "geheim", "blubb", "geheim", "blubb", "geheim", "b
 ## load, decrypt, print, encrypt, safe passwordlist
 ## for testing purpose
 ## TODO, auslagerung in testing.py
+
+
 def test_restore_basic_datafile():
     
     #reset
@@ -46,11 +52,11 @@ def test_restore_basic_datafile():
     #encryptedd = []
 
     #for reset
-    with open("test.txt", "wb") as fp:   #Pickling
+    with open("data.txt", "wb") as fp:   #Pickling
         pickle.dump(encryptedd, fp)
  
    
-    with open("test.txt", "rb") as fp:   # Unpickling
+    with open("data.txt", "rb") as fp:   # Unpickling
         b = pickle.load(fp)
   
     
@@ -63,7 +69,7 @@ def test_restore_basic_datafile():
 
 def test_show_data():
   
-    with open("test.txt", "rb") as fp:   # Unpickling
+    with open("data.txt", "rb") as fp:   # Unpickling
         b = pickle.load(fp)
     
     #print(b)
@@ -75,6 +81,7 @@ def test_show_data():
     print("")
     #print(testlist1)
 
-
-test_restore_basic_datafile()
-test_show_data()
+#####################################################
+#test_restore_basic_datafile()
+#test_show_data()
+#####################################################

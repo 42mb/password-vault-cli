@@ -1,6 +1,7 @@
 import rsa
 import os
-
+import bcrypt
+import pickle
 
 
 def getPrivateKey():    
@@ -40,3 +41,17 @@ def decrypt_list(listToDecrypt):
 
     return listDecrypted
     
+
+def correct_hash(password):
+    with open("hash.txt", "rb") as fp:   # Unpickling
+        hashAndSalt = pickle.load(fp)
+    #print(hashAndSalt)
+    return bcrypt.checkpw(password.encode(), hashAndSalt)
+
+
+def new_password(password):
+    #print(password)
+    hashAndSalt = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+    #print(hashAndSalt)
+    with open("hash.txt", "wb") as fp:   #Pickling
+        pickle.dump(hashAndSalt, fp)
