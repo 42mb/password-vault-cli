@@ -2,6 +2,9 @@ import rsa
 import os
 import bcrypt
 import pickle
+import string
+import secrets
+import random
 
 
 def getPrivateKey():    
@@ -20,7 +23,6 @@ def getPublicKey():
        
     publicfile.close()
     return pubkey
-
 
 
 def encrypt_list(listToEncrypt):
@@ -49,9 +51,29 @@ def correct_hash(password):
     return bcrypt.checkpw(password.encode(), hashAndSalt)
 
 
-def new_password(password):
+def new_masterpassword(password):
     #print(password)
     hashAndSalt = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
     #print(hashAndSalt)
     with open("hash.txt", "wb") as fp:   #Pickling
         pickle.dump(hashAndSalt, fp)
+    fp.close
+
+
+# to be sure to have at least 2(amount) of each (lower/uper/digit/punctuations)
+# remaining spots will be filled randomly. Afterwards shuffeled.
+def gen_password(length = 15):
+    if (length<10):
+        print('minimum length is set to 10')
+        length = 10
+    amount = 2;    
+    password1 = "".join(secrets.choice(string.ascii_lowercase)for i in range(amount))
+    password2 = "".join(secrets.choice(string.ascii_uppercase)for i in range(amount))
+    password3 = "".join(secrets.choice(string.digits)for i in range(amount))
+    password4 = "".join(secrets.choice(string.punctuation)for i in range(amount))
+    password5 = "".join(secrets.choice(secrets.choice(string.ascii_letters + string.digits + string.punctuation))for i in range(length-4*amount))
+    password = password1 + password2 + password3 + password4 + password5
+    passwordlist = list(password)
+    random.SystemRandom().shuffle(passwordlist)
+    password = "".join(passwordlist)
+    return password
