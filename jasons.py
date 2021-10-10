@@ -12,19 +12,17 @@ def saveto(class_list):
         plain_list.append(obj.site)
         plain_list.append(obj.account)
         plain_list.append(obj.pw)
-   
+
     encryptedList = sec.encrypt_list(plain_list)
- 
     with open("data.txt", "wb") as fp:
         pickle.dump(encryptedList, fp)
-       
+    fp.close   
 
 def loadfrom():
-
       
     with open("data.txt", "rb") as fp:
-        cryptedlist = pickle.load(fp)
-        
+        cryptedlist = pickle.load(fp)        
+    fp.close
 
     decrypted_parsed_list = []
     decrypted_parsed_list = sec.decrypt_list(cryptedlist) 
@@ -41,12 +39,13 @@ def loadfrom():
 
 
 def searchfrom(parsed_list, domainToBeFound):
+    resultlist = []
     for obj in parsed_list:
-        if(obj.site==domainToBeFound):
-            resultlist = []
+        if(obj.site == domainToBeFound):
+            #resultlist = []
             resultlist.append(obj.account)
             resultlist.append(obj.pw)
-            return resultlist
-        else:
-            print("not found")
+            #print(obj.account)
+    return resultlist
+    #print("not found")
 

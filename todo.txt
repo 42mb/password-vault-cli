@@ -1,7 +1,11 @@
 ########## TODO  ||!TODO  ##############
 
-#   first opening 
-#   argv handeling ARGV2 ARGV3 ARGV4
+#   first opening
+#   argv ERROR handeling ARGV2 ARGV3
+
+    #BUG list only expendable by one 
+    #planned fix bei opening routine
+    #load erkennt auch nicht neu hinzugefügte elemente
 
 #   closed console = closed program 
 #   planned domainpassword nge

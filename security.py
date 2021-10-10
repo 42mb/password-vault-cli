@@ -30,7 +30,7 @@ def encrypt_list(listToEncrypt):
     listEncrypted = []
     for elem in listToEncrypt:
         listEncrypted.append(rsa.encrypt(elem.encode(), pubKey))  
-
+        
     return listEncrypted
     
 
@@ -48,6 +48,7 @@ def correct_hash(password):
     with open("hash.txt", "rb") as fp:   # Unpickling
         hashAndSalt = pickle.load(fp)
     #print(hashAndSalt)
+    fp.close
     return bcrypt.checkpw(password.encode(), hashAndSalt)
 
 
@@ -66,6 +67,7 @@ def gen_password(length = 15):
     if (length<10):
         print('minimum length is set to 10')
         length = 10
+
     amount = 2;    
     password1 = "".join(secrets.choice(string.ascii_lowercase)for i in range(amount))
     password2 = "".join(secrets.choice(string.ascii_uppercase)for i in range(amount))
