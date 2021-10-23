@@ -31,7 +31,7 @@ import random
 
 
 def confirmed_pw():
-    userinputPassword = getpass.getpass('enter masterpassword:')
+    userinputPassword = getpass.getpass('enter masterpassword: ')
     #normal mode: one line up
     #debug mode:  one line down
     #userinputPassword = majorpw
@@ -58,7 +58,7 @@ def insert_new_data(argv_domain):
         
         input_domain = argv_domain[0]
         input_username = argv_domain[1]
-        input_pw = getpass.getpass('enter password')
+        input_pw = getpass.getpass('enter password: ')
         class_list = jasons.loadfrom()
         class_list.append( objdata.logindata(input_domain, input_username, input_pw))
         jasons.saveto(class_list)   
@@ -107,7 +107,6 @@ def insert_generated_new_data(parsed_args):
         input_pw = sec.gen_password()
         class_list = jasons.loadfrom()
         class_list.append( objdata.logindata(input_domain, input_username, input_pw))
-        #irgendwas mag er hier vermutlich nicht BUG
         jasons.saveto(class_list)
         copy2clipboard(input_pw)
 

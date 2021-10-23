@@ -4,6 +4,7 @@ import jasons
 import inputhandler
 import security as sec
 import os, json
+import testin
 import pickle
 import argparse
 
@@ -17,6 +18,7 @@ import argparse
     #planned fix bei opening routine
     #load erkennt auch nicht neu hinzugefügte elemente (über safe)
 
+#   handle empty data.txt
 #   closed console = closed program 
 #   planned domainpassword change
 #   planned delete object
@@ -26,12 +28,13 @@ import argparse
 #   maybe encrypt obj /w class fnc?
 #   maybe cleanup/garbage handeling in a secured way
 #   maybe data cleanup? (memory überschreiben)
+#   check duplicate
 
 ##############################
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-i", "--InsertNewInput", help = "Insert Dataset. Input: -i Domain Accountname", action = "store_true" )
-parser.add_argument("-ig", "--InsertNewData_GeneratedPassword", help = "Insert Dataset. Password automaticle generated. Input: -ig Domain Accountname", action = "store_true")
+parser.add_argument("-ig", "--InsertNewData_GeneratedPassword", help = "Insert Dataset. Password automatically generated. Input: -ig Domain Accountname", action = "store_true")
 parser.add_argument("-l", "--loadData", help = "Load specific data. Input: -l Domain", action = "store_true")
 parser.add_argument("-mp", "--newMasterPassword", help = "Change the Master Password of the program.", action = "store_true")
 #parser.add_argument("-p", "--newPassword", help = "Change the Password of a Domain. (automaticly generated) Input: -p Domain", action = "store_true")
@@ -75,79 +78,13 @@ def handle_input():
 
     
 handle_input()
-#print(parser.parse_args)
-#print(args.parsed_domain)
-#print(args.parsed_username)
-#################
-
-
-
-
-###############################
-#### testing for now:
-
-## load, decrypt, print, encrypt, safe passwordlist
-## for testing purpose
-## TODO, auslagerung in testing.py
-
-
-def test_restore_basic_datafile(): #and output
-    
-    testlist1 =["xing", "blubb", "geheim", 
-                "xing", "blubb", "geheim", 
-                "xincg", "blubb", "geheim", 
-                "xineg", "blubb", "geheim", 
-                "xinrg", "blubb", "geheim", 
-                "xigng", "blubb", "geheim", 
-                "xfing", "blubb", "geheim", 
-                "x2ing", "blubb", "geheim", 
-                "xinsg", "blubb", "gehiem", 
-                "xidng", "usena", "pw123"]
-
-    #print(testlist1)
-    #reset to testlist
-    encryptedd = sec.encrypt_list(testlist1)
-    print(encryptedd)
-    print("")
-    
-    #for reset
-    with open("data.txt", "wb") as fp:   #Pickling
-        pickle.dump(encryptedd, fp)
-    fp.close
- 
-   
-    with open("data.txt", "rb") as fp:   # Unpickling
-        b = pickle.load(fp)
-    fp.close
-    print(b)
-    print('')
-    decrypted = sec.decrypt_list(b)
-    print(decrypted)
-    print("")
-    print("")
-    print("")
-    #print(testlist1)
-
-def test_show_data():
-  
-    with open("data.txt", "rb") as fp:   # Unpickling
-        b = pickle.load(fp)
-    fp.close
-    #print("")
-    #print(b)
-    
-    decrypted = sec.decrypt_list(b)
-    print(decrypted)
-    #print("")
-    #print("")
-    print("")
-    #print(testlist1)
 
 #####################################################
-### uncommand if needed:
-#test_restore_basic_datafile()
-test_show_data()
+### testing: 
 
+#test_restore_basic_datafile()
+#init_one_value_to_empty()
+testin.test_show_data()
 
 #sec.new_password("123")
 #test = sec.correct_hash("1234")

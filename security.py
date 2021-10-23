@@ -61,7 +61,7 @@ def new_masterpassword(password):
     fp.close
 
 
-# to be sure to have at least 2(amount) of each (lower/uper/digit/punctuations)
+# to be sure to have at least 2(amount) of each (lower/upper/digit/punctuations)
 # remaining spots will be filled randomly. Afterwards shuffeled.
 def gen_password(length = 15):
     if (length<10):
@@ -72,7 +72,8 @@ def gen_password(length = 15):
     password1 = "".join(secrets.choice(string.ascii_lowercase)for i in range(amount))
     password2 = "".join(secrets.choice(string.ascii_uppercase)for i in range(amount))
     password3 = "".join(secrets.choice(string.digits)for i in range(amount))
-    password4 = "".join(secrets.choice(string.punctuation)for i in range(amount))
+    password4 = "".join(secrets.choice(string.digits)for i in range(amount))
+    #password4 = "".join(secrets.choice(string.punctuation)for i in range(amount))
     password5 = "".join(secrets.choice(secrets.choice(string.ascii_letters + string.digits + string.punctuation))for i in range(length-4*amount))
     password = password1 + password2 + password3 + password4 + password5
     passwordlist = list(password)
