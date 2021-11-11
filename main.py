@@ -45,12 +45,11 @@ parser.add_argument('parsed_args', nargs= "*", default = "", action = "store")
 args = parser.parse_args()
 
 def handle_input():
-    print("Well met")
     if(args.InsertNewInput): 
         #input -NEW domain/name/password
         #argv1 ,argv2, argv3 
         #generel wanted input : argv1, argv2, argv3
-        #                        -n    domain  name
+        #                        -i    domain  name
         inputhandler.insert_new_data(args.parsed_args) 
         
     if(args.loadData): #load, maybe with lower(argv1) ?

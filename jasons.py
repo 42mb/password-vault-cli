@@ -17,13 +17,13 @@ def saveto(class_list):
     #encryptedList = plain_list
     #print("save")
     #print(plain_list)
-    with open("data.txt", "wb") as fp:
+    with open("data/data.txt", "wb") as fp:
         pickle.dump(encryptedList, fp)
     fp.close   
 
 def loadfrom():
       
-    with open("data.txt", "rb") as fp:
+    with open("data/data.txt", "rb") as fp:
         cryptedlist = pickle.load(fp)        
     fp.close
 

@@ -8,7 +8,7 @@ import random
 
 
 def getPrivateKey():    
-    with open('privateKK.pem', mode='rb') as privatefile:
+    with open('data/privateKK.pem', mode='rb') as privatefile:
         keydata = privatefile.read()
         privkey = rsa.PrivateKey.load_pkcs1(keydata)
        
@@ -17,7 +17,7 @@ def getPrivateKey():
 
 
 def getPublicKey():
-    with open('publicKK.pem', mode='rb') as publicfile:
+    with open('data/publicKK.pem', mode='rb') as publicfile:
         keydata = publicfile.read()
         pubkey = rsa.PublicKey.load_pkcs1(keydata)
        
@@ -45,7 +45,7 @@ def decrypt_list(listToDecrypt):
     
 
 def correct_hash(password):
-    with open("hash.txt", "rb") as fp:   # Unpickling
+    with open("data/hash.txt", "rb") as fp:   # Unpickling
         hashAndSalt = pickle.load(fp)
     #print(hashAndSalt)
     fp.close
@@ -56,7 +56,7 @@ def new_masterpassword(password):
     #print(password)
     hashAndSalt = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
     #print(hashAndSalt)
-    with open("hash.txt", "wb") as fp:   #Pickling
+    with open("data/hash.txt", "wb") as fp:   #Pickling
         pickle.dump(hashAndSalt, fp)
     fp.close
 
@@ -73,7 +73,7 @@ def gen_password(length = 15):
     password2 = "".join(secrets.choice(string.ascii_uppercase)for i in range(amount))
     password3 = "".join(secrets.choice(string.digits)for i in range(amount))
     password4 = "".join(secrets.choice(string.digits)for i in range(amount))
-    #password4 = "".join(secrets.choice(string.punctuation)for i in range(amount))
+    #password4 = "".join(secrets.choice(string.punctuation)for i in range(amount)) #possible escape of list elements
     password5 = "".join(secrets.choice(secrets.choice(string.ascii_letters + string.digits + string.punctuation))for i in range(length-4*amount))
     password = password1 + password2 + password3 + password4 + password5
     passwordlist = list(password)

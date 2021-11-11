@@ -34,12 +34,12 @@ def test_restore_basic_datafile(): #and output
     print("")
     
     #for reset
-    with open("data.txt", "wb") as fp:   #Pickling
+    with open("data/data.txt", "wb") as fp:   #Pickling
         pickle.dump(encryptedd, fp)
     fp.close
  
     
-    with open("data.txt", "rb") as fp:   # Unpickling
+    with open("data/data.txt", "rb") as fp:   # Unpickling
         b = pickle.load(fp)
     fp.close
     print(b)
@@ -53,7 +53,7 @@ def test_restore_basic_datafile(): #and output
 
 def test_show_data():
     b = []
-    with open("data.txt", "rb") as fp:   # Unpickling
+    with open("data/data.txt", "rb") as fp:   # Unpickling
         b = pickle.load(fp)
     fp.close
     #print("")
@@ -68,7 +68,7 @@ def test_show_data():
 
 def init_one_value_to_empty():
     testli = ['why111', 'boy111', '1234']
-    with open("data.txt", "wb") as fp:
+    with open("data/data.txt", "wb") as fp:
         pickle.dump(testli, fp)
     fp.close   
 

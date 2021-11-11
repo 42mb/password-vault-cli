@@ -5,29 +5,41 @@ NO Liability,
 NO Warranty,  
 use at own risk.  
 
-Status: not working  
+Status:   wip - basic functionality but no setup process yet
 
 ###########################################  
 
-Console based script which will save passwords into a rsa encrypted json file.  
+Console based script which will save passwords into a rsa encrypted file via pickle.  
 
-planned input:  
-  -> start script with argv's (inputflag/domain/username)  
-  -> getting asked masterpassword (getpass)  
-  -> getting asked domain specific password (getpass)  
-planned output:  
-  -> start script with argv's (outputflag/domain  
-  -> getting asked masterpassword (getpass)  
-  -> output of domainspecific username  
-  -> copying domainpassword to clipboard  
+functionality:  
+    InsertNewInput (argv: -i)  
+    InsertNewData_GeneratedPassword (argv: -ig)  
+    loadData (argv: -l)  
+    newMasterPassword (argv: -mp)  
+  
+
+planned procedure:  
+  insert new input:  
+    -> start script with argv's (inputflag/domain/username)  
+    -> getting asked masterpassword (getpass)  
+    -> getting asked domain specific password (getpass)   
+      will not be asked with the -ig option. Generated password  
+      will be stored in the clipboard.  
+  
+  load data:  
+    -> start script with argv's (outputflag/domain)    
+    -> getting asked masterpassword (getpass)  
+    -> output of domainspecific username  
+    -> copying domainpassword to clipboard  
   
   TBC  
   
   
   todo for general use:  
-  generating public-/privatekey and master password hash at first use  
-  choosing file folder   
-  auto enable alias in bashrc  
+    generating public-/privatekey before first use  
+    change masterpassword via -mp (standard password should be "1234")
+    choosing file folder   
+    auto enable alias in bashrc  
 
-  Keys are published for the purpose of testing and of smaller size (<2048bit)
+  Keys are published for the purpose of testing and of smaller and unsafe size (<2048bit)
 
