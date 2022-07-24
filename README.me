@@ -20,15 +20,18 @@ functionality:
   
 
 planned procedure:  
+  Alias/Path the Script or start via IDE)  
   insert new input:  
     -> start script with argv's (inputflag/domain/username)  
+         example: password-vault-cli -ig Musterseite.us MaxMustermann   
     -> getting asked masterpassword (getpass)  
     -> getting asked domain specific password (getpass)   
-      will not be asked with the -ig option. Generated password  
-      will be stored in the clipboard.  
+       (will not be asked with the -ig option.)    
+    -> generated password will be stored in the clipboard.   
   
   load data:  
-    -> start script with argv's (outputflag/domain)    
+    -> start script with argv's (outputflag/domain)   
+        example: password-vault-cli -l Musterseite.us
     -> getting asked masterpassword (getpass)  
     -> output of domainspecific username  
     -> copying domainpassword to clipboard  
@@ -38,7 +41,7 @@ planned procedure:
   
   todo for general use:  
     generating public-/privatekey before first use (see ./data/ for examples)      
-    change masterpassword via -mp (standard password should be "1234")
+    change masterpassword via -mp (standard password should be "1234")    
     choosing file folder   
     auto enable alias in bashrc  
 
